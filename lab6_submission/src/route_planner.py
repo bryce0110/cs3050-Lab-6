@@ -132,6 +132,9 @@ def dijkstra_time(graph: Graph, start: int, end: int) -> Tuple[Dict[int, float],
         if u == end:
             return dist, prev, nodes_explored, True
         
+        if current_dist > dist[u]:
+            continue
+        
         for edge in graph.adj_list.get(u, []):
             v = edge.to
             arrival = current_dist + edge.weight
